@@ -1,101 +1,59 @@
+'use client'
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import LogoSpeed from "../../public/logo-speed-branco.png";
 
-export default function Home() {
+export default function Signin() {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <main className="relative flex flex-col items-center justify-center h-screen bg-[url('/background-signin.jpg')] bg-cover after:absolute after:left-0 after:top-0 after:w-full after:h-full after:bg-slate-900 after:opacity-75">
+      <section className="w-full h-full max-md:flex max-md:items-center max-md:justify-center md:px-20 md:py-10 grid grid-cols-2 px-10 py-16 z-50">
+        <div className="max-md:hidden relative rounded-l-lg shadow-lg bg-[url('/background-login-2.jpg')] bg-cover bg-no-repeat after:absolute after:left-0 after:top-0 after:w-full after:h-full after:bg-slate-900 after:opacity-85 after:rounded-l-lg">
+          <div className="flex flex-col items-center justify-between space-y-32 px-10 py-16">
             <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              className="z-50 w-80"
+              src={LogoSpeed}
+              alt="Logo"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <span className="text-1xl text-gray-50 z-50">© 2024 Powered by SpeedAutomac</span>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+        <div className="flex flex-col items-center bg-gray-200 p-10 md:p-20 rounded-sm space-y-6 md:rounded-r-lg shadow-lg">
+          <span className="font-bold text-2xl">Bem-vindo</span>
+          <span className="text-1xl">Faça seu login para continuar</span>
+          <div className="w-full">
+            <label htmlFor="email">Email</label>
+            <Input type="email" id="email" className="border-zinc-900 shadow-md" placeholder="Digite seu email" />
+          </div>
+          <div className="relative w-full">
+            <label htmlFor="email">Senha</label>
+            <Input type={`${!showPassword ? "password" : "text"}`} className="border-zinc-900 shadow-md" placeholder="Digite sua senha" />
+            <button className="absolute right-2 bottom-[5px]" onClick={() => setShowPassword(!showPassword)}>
+              {
+                !!showPassword ? (
+                  <Eye />
+                ) : (
+                  <EyeOff />
+                )
+              }
+            </button>
+          </div>
+          <div>
+            <Link className="text-md underline" href="#">Esqueci minha senha</Link>
+          </div>
+          <Link href="/painel" className="w-full">
+            <Button variant="outline" className="bg-slate-400 hover:bg-slate-900 hover:text-gray-200 w-full">
+              Entrar
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </main>
+  )
 }
